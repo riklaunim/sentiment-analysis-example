@@ -27,15 +27,15 @@ class TestSentimentPlotter:
         assert call.args == (0.9, 0.2)
 
 
-class TestSentimentPrinter:
-    @mock.patch('libraries.visualisation.SentimentPrinter._save_file')
+class TestSentimentTable:
+    @mock.patch('libraries.visualisation.SentimentTable._save_file')
     def test_if_file_is_saved(self, save_file):
         review = {
             'id': 123, 'text': 'zzz', 'rating': 5, 'polarity': 0.9, 'subjectivity': 0.2
         }
         data = pandas.DataFrame([review], columns=['id', 'text', 'rating', 'polarity', 'subjectivity'])
 
-        printer = visualisation.SentimentPrinter(data)
+        printer = visualisation.SentimentTable(data)
         printer.save()
 
         call = save_file.call_args_list[0]

@@ -24,7 +24,7 @@ class SentimentPlotter:
             plot.scatter(x, y, color='Red')
 
 
-class SentimentPrinter:
+class SentimentTable:
     template_file = 'assets/template.html'
     template_block = '<!-- template -->'
 
