@@ -12,6 +12,9 @@ Create a virtualenv and install the dependencies:
 pip install -r requirements.txt
 python setup.py test  # tests should pass
 ```
+`requirements.txt` has a freezed version of dependencies, while `base_requirements` unfrozen dependencies.
+If you can't install all packages from frozen list try the other one.
+
 You can execute the `run.py` file to regenerate the data. If you want to use it for your own data then you will
 either have to provide a json file in expected format or alter data structures in this example. Supported JSON looks
 like so:
