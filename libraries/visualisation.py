@@ -45,19 +45,31 @@ class SentimentTable:
         data = self.data_set.to_dict(orient='records')
         for row in data:
             yield self.row_template.format(
-                tripadvisor_id=row['id'], text=row['text'], rating=row['rating'], subjectivity=row['subjectivity'],
-                polarity=row['polarity'],
+                tripadvisor_id=row['id'], text=row['text'], rating=row['rating'], subjectivity=round(row['subjectivity'], 2),
+                polarity=round(row['polarity'], 2), color=self._get_css_color(row['polarity'])
             )
 
     @property
     def row_template(self):
-        return ('<tr>'
+        return ('<tr style="background-color: rgba({color});">'
                 '<td>{tripadvisor_id}</td>'
                 '<td>{text}</td>'
                 '<td>{rating}</td>'
                 '<td>{subjectivity}</td'
                 '><td>{polarity}</td>'
                 '</tr>')
+
+    def _get_css_color(self, polarity):
+        ratio = str(self._get_polarity_ratio(polarity))
+        if polarity >= 0:
+            color = ('0', '255', '0', ratio)
+        else:
+            color = ('255', '0', '0', ratio)
+        return ', '.join(color)
+
+    @staticmethod
+    def _get_polarity_ratio(polarity):
+        return round(abs(polarity) / 1.0, 2)
 
     @staticmethod
     def _save_file(file_name, html):

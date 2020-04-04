@@ -5,7 +5,7 @@ analyzer = analysis.SentimentAnalyzer()
 data = analyzer.build_data_set('data/skalny.json')
 
 plotter = visualisation.SentimentPlotter(data)
-plotter.draw('sentiment_skalny.png')
+plotter.draw()
 
 printer = visualisation.SentimentTable(data)
 printer.save()

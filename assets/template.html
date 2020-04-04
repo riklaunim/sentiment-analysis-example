@@ -14,22 +14,36 @@
         td, th {
             padding: 5px;
         }
+        .sentiment {
+            width: 150px;
+        }
+        .header {
+            background-color: rgba(0, 0, 255, 0.5);
+            color: white;
+        }
+        .image {
+            margin: 20px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <table>
-        <tr>
+        <tr class="header">
             <th rowspan="2">ID</th>
             <th rowspan="2">Text</th>
             <th rowspan="2">Rating</th>
-            <th>Subjectivity</th>
-            <th>Polarity</th>
+            <th class="sentiment">Subjectivity</th>
+            <th class="sentiment">Polarity</th>
         </tr>
-        <tr>
+        <tr class="header">
             <th>Facts - Opinions</th>
             <th>Negative - Positive</th>
         </tr>
         <!-- template -->
     </table>
+    <div class="image">
+        <img src="sentiment.png" alt="">
+    </div>
 </body>
 </html>

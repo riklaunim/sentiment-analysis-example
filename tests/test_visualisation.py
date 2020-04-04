@@ -40,4 +40,27 @@ class TestSentimentTable:
 
         call = save_file.call_args_list[0]
         assert call.args[0] == 'analysis.html'
-        assert '<tr><td>123</td><td>zzz</td><td>5</td><td>0.2</td><td>0.9</td></tr>' in call.args[1]
+        row = ('<tr style="background-color: rgba(0, 255, 0, 0.9);">'
+               '<td>123</td><td>zzz</td><td>5</td><td>0.2</td><td>0.9</td>'
+               '</tr>')
+        assert row in call.args[1]
+
+    def test_if_returns_polarity_for_bad(self):
+        printer = visualisation.SentimentTable(None)
+        result = printer._get_polarity_ratio(-1)
+        assert result == 1.0
+
+    def test_if_returns_polarity_for_half_bad(self):
+        printer = visualisation.SentimentTable(None)
+        result = printer._get_polarity_ratio(-0.5)
+        assert result == 0.5
+
+    def test_if_returns_polarity_for_half_good(self):
+        printer = visualisation.SentimentTable(None)
+        result = printer._get_polarity_ratio(0.5)
+        assert result == 0.5
+
+    def test_if_returns_polarity_for_good(self):
+        printer = visualisation.SentimentTable(None)
+        result = printer._get_polarity_ratio(1)
+        assert result == 1
