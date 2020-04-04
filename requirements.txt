@@ -1,4 +1,5 @@
 pandas
+pytest
 numpy
 textblob
 matplotlib
