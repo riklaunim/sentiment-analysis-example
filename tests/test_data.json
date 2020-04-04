@@ -1,0 +1,24 @@
+{"data": [
+   {
+      "type":"tripadvisor-reviews",
+      "id":"122566874",
+      "attributes":{
+         "reviewer-name":"Tomato",
+         "tripadvisor-id":123,
+         "text":"I liked the music and the view was relaxing.",
+         "reviewed-at":"2012-01-01",
+         "rating":4
+      }
+   },
+   {
+      "type":"tripadvisor-reviews",
+      "id":"122566875",
+      "attributes":{
+         "reviewer-name":"Potato",
+         "tripadvisor-id":456,
+         "text":"Rooms of high standard with good service and good staff. Excellent restaurant.",
+         "reviewed-at":"2012-01-01",
+         "rating":3
+      }
+   }
+]}
