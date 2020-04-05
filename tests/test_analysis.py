@@ -26,7 +26,7 @@ class TestSentimentAnalyzer:
         ]
         assert result.to_dict(orient='records') == expected
 
-    @mock.patch('libraries.analysis.DataFrameFactory')
+    @mock.patch('libraries.analysis.ReviewFactory')
     def test_if_data_frame_factory_is_called(self, frame_factory):
         analyzer = analysis.SentimentAnalyzer()
         analyzer._get_data_frame('path/to/file.json')
@@ -56,10 +56,10 @@ class TestSentimentAnalyzer:
         assert round(result, 2) == 0.55
 
 
-class TestDataFrameFactory:
-    def test_if_data_frame_is_returned(self):
-        factory = analysis.DataFrameFactory('tests/test_data.json')
-        result = factory.get_data_frame()
+class TestReviewFactory:
+    def test_if_reviews_are_returned(self):
+        factory = analysis.ReviewFactory('tests/test_data.json')
+        result = factory.get_reviews()
 
         expected = [
             {
@@ -75,8 +75,8 @@ class TestDataFrameFactory:
         ]
         assert result.to_dict(orient='records') == expected
 
-    @mock.patch('libraries.analysis.DataFrameFactory._get_raw_json')
-    def test_if_raw_data_is_built_from_json(self, raw_json):
+    @mock.patch('libraries.analysis.ReviewFactory._get_raw_json')
+    def test_if_reviews_are_built_from_json(self, raw_json):
         raw_json.return_value = {"data": [
            {
               "type": "tripadvisor-reviews",
@@ -91,7 +91,7 @@ class TestDataFrameFactory:
            },
         ]}
 
-        factory = analysis.DataFrameFactory(None)
+        factory = analysis.ReviewFactory(None)
         result = list(factory._get_raw_data())
 
         expected = [

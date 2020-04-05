@@ -19,8 +19,8 @@ class SentimentAnalyzer:
 
     @staticmethod
     def _get_data_frame(json_file):
-        factory = DataFrameFactory(json_file)
-        return factory.get_data_frame()
+        factory = ReviewFactory(json_file)
+        return factory.get_reviews()
 
     @staticmethod
     def _get_polarity(phrase):
@@ -31,11 +31,11 @@ class SentimentAnalyzer:
         return TextBlob(phrase).sentiment.subjectivity
 
 
-class DataFrameFactory:
+class ReviewFactory:
     def __init__(self, json_file):
         self.json_file = json_file
 
-    def get_data_frame(self):
+    def get_reviews(self):
         raw_data = self._get_raw_data()
         return pandas.DataFrame(raw_data, columns=['id', 'text', 'rating'])
 
