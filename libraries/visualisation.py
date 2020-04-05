@@ -9,6 +9,7 @@ class SentimentPlotter:
         self._configure_chart()
         self._fill_chart()
         plot.savefig(chart_name)
+        plot.close()
 
     @staticmethod
     def _configure_chart():
