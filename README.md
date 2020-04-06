@@ -1,6 +1,9 @@
 This example code uses `textblob` to do sentiment analysis on TripAdvisor reviews - assigning a numerical value of
 polarity (negative - positive) and subjectivity - from fact to opinions.
 
+Article: https://rk.edu.pl/en/designing-sentiment-analysis-application-tripadvisor-reviews-python/
+
+
 Viewing example results
 -----------------------
 Results for three hotels are in the `results` folder.
